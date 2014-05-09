@@ -14,11 +14,12 @@ return array(
         'Application',
         'Album',
         'Company',
-        //'ZfcBase',
-        //'ZfcUser',
-        //'ZfcUserDoctrineORM',
-        //'BjyAuthorize',
+        'ZfcBase',
+        'ZfcUser',
+        'ZfcUserDoctrineORM',
+        'BjyAuthorize',
         'Branch',
+        'MyAcl',
         'User'
     ),
     'module_listener_options' => array(
