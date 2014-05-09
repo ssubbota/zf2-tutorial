@@ -35,13 +35,13 @@ class AlbumController extends AbstractActionController {
 
     public function indexAction() {
         // pruefen ob benutzer angemeldet ist
-        if (!$this->zfcUserAuthentication()->hasIdentity()) {            
+        /*if (!$this->zfcUserAuthentication()->hasIdentity()) {            
             return $this->redirect()->toRoute('home');
-        } else {
+        } else {*/
             return new ViewModel(array(
                 'albums' => $this->getEntityManager()->getRepository('Album\Entity\Album')->findAll()
             ));
-        }
+        //}
     }
 
     public function addAction() {

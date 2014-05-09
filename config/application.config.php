@@ -14,9 +14,9 @@ return array(
         'Application',
         'Album',
         'Company',
-        'ZfcBase',
-        'ZfcUser',
-        'ZfcUserDoctrineORM',
+        //'ZfcBase',
+        //'ZfcUser',
+        //'ZfcUserDoctrineORM',
         //'BjyAuthorize',
         'Branch',
         'User'

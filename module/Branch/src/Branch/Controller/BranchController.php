@@ -46,13 +46,13 @@ class BranchController extends AbstractActionController {
     }
 
     public function indexAction() {
-        if (!$this->zfcUserAuthentication()->hasIdentity()) {            
+        /*if (!$this->zfcUserAuthentication()->hasIdentity()) {            
             return $this->redirect()->toRoute('home');
-        } else {    
+        } else {*/ 
             return new ViewModel(array(
                 'branches' => $this->getEntityManager()->getRepository('Branch\Entity\Branch')->findAll()
             ));
-        }
+        //}
     }
 
     public function addAction() {

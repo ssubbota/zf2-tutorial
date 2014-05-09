@@ -15,9 +15,9 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        //'controller' => 'Application\Controller\Index',
+                        'controller' => 'Application\Controller\Index',
                         //'controller' => 'Album\Controller\Album', // <-- change here
-                        'controller' => 'zfcuser',
+                        //'controller' => 'zfcuser',
                         'action'     => 'index',
                     ),
                 ),

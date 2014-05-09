@@ -28,13 +28,13 @@ class CompanyController extends AbstractActionController
     }
 
     public function indexAction() {
-        if (!$this->zfcUserAuthentication()->hasIdentity()) {            
+        /*if (!$this->zfcUserAuthentication()->hasIdentity()) {            
             return $this->redirect()->toRoute('home');
-        } else {
+        } else {*/
             return new ViewModel(array(
                 'companies' => $this->getEntityManager()->getRepository('Company\Entity\Company')->findAll()
             ));
-        }
+        //}
     }
     
     public function addAction()
