@@ -1,0 +1,40 @@
+<?php
+$title = 'Filialen';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('branch', array('action' => 'add')); ?>">Neue Filiale hinzuf&uuml;gen</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Firma</th>
+        <th>Filiale</th>
+        <th>E-Mail</th>
+        <th>Telefon</th>
+        <th>Strasse</th>
+        <th>PLZ, Ort</th>
+        <th>Web</th>
+        <th>Beschreibung</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($branches as $branch) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($branch->company_id); ?></td>
+            <td><?php echo $this->escapeHtml($branch->name); ?></td>
+            <td><?php echo $this->escapeHtml($branch->email); ?></td>
+            <td><?php echo $this->escapeHtml($branch->phone); ?></td>
+            <td><?php echo $this->escapeHtml($branch->street); ?></td>
+            <td><?php echo $this->escapeHtml($branch->zip) . ' ' . $this->escapeHtml($branch->place); ?></td>
+            <td><?php echo $this->escapeHtml($branch->web); ?></td>
+            <td><?php echo $this->escapeHtml($branch->description); ?></td>
+            <td>
+                <a href="<?php echo $this->url('branch', array('action' => 'edit', 'id' => $branch->id));
+        ?>">Edit</a>
+                <a href="<?php echo $this->url('branch', array('action' => 'delete', 'id' => $branch->id));
+        ?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>

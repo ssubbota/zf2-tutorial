@@ -1,0 +1,76 @@
+<?php
+$title = 'Filiale bearbeiten';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+                'branch', array(
+                    'action' => 'edit',
+                    'id' => $this->id,
+                )
+));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+?>
+<div class="form-group">
+    <label for="inputCompany" class="control-label col-xs-2"><?php echo $this->formlabel($form->get('company_id')); ?></label>
+    <!--<div class="col-xs-6"><?php //echo $this->formElement($form->get('company_id')); ?></div>-->    
+    <div class="col-xs-6">
+        <select name="company_id">
+            <?php foreach ($companies as $company) : ?>
+            <option value="<?php echo $this->escapeHtml($company->id); ?>"><?php echo $this->escapeHtml($company->name); ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="col-xs-4"><?php echo $this->formElementErrors($form->get('company_id')) ?></div>
+</div>
+<div class="form-group">
+    <label for="inputName" class="control-label col-xs-2"><?php echo $this->formlabel($form->get('name')); ?></label>
+    <div class="col-xs-6"><?php echo $this->formElement($form->get('name')); ?></div>
+    <div class="col-xs-4"><?php echo $this->formElementErrors($form->get('name'), array('class' => 'error', 'message' => 'errormessage')) ?></div>
+    <?php //echo $this->formElementErrors($form->get("Name"), array('class' => "some_class", 'message' => "errormessage")); ?>
+</div>
+<div class="form-group">
+    <label for="inputEmail" class="control-label col-xs-2"><?php echo $this->formlabel($form->get('email')); ?></label>
+    <div class="col-xs-6"><?php echo $this->formElement($form->get('email')); ?></div>
+    <div class="col-xs-4"><?php echo $this->formElementErrors($form->get('email')) ?></div>
+</div>
+<div class="form-group">
+    <label for="inputPhone" class="control-label col-xs-2"><?php echo $this->formlabel($form->get('phone')); ?></label>
+    <div class="col-xs-6"><?php echo $this->formElement($form->get('phone')); ?></div>
+    <div class="col-xs-4"><?php echo $this->formElementErrors($form->get('phone')) ?></div>
+</div>
+<div class="form-group">
+    <label for="inputStreet" class="control-label col-xs-2"><?php echo $this->formlabel($form->get('street')); ?></label>
+    <div class="col-xs-6"><?php echo $this->formElement($form->get('street')); ?></div>
+    <div class="col-xs-4"><?php echo $this->formElementErrors($form->get('street')) ?></div>
+</div>
+<div class="form-group">
+    <label for="inputZip" class="control-label col-xs-2"><?php echo $this->formlabel($form->get('zip')); ?></label>
+    <div class="col-xs-6"><?php echo $this->formElement($form->get('zip')); ?></div>
+    <div class="col-xs-4"><?php echo $this->formElementErrors($form->get('zip')) ?></div>
+</div>
+<div class="form-group">
+    <label for="inputPlace" class="control-label col-xs-2"><?php echo $this->formlabel($form->get('place')); ?></label>
+    <div class="col-xs-6"><?php echo $this->formElement($form->get('place')); ?></div>
+    <div class="col-xs-4"><?php echo $this->formElementErrors($form->get('place')) ?></div>
+</div>
+<div class="form-group">
+    <label for="inputWeb" class="control-label col-xs-2"><?php echo $this->formlabel($form->get('web')); ?></label>
+    <div class="col-xs-6"><?php echo $this->formElement($form->get('web')); ?></div>
+    <div class="col-xs-4"><?php echo $this->formElementErrors($form->get('web')) ?></div>
+</div>
+<div class="form-group">
+    <label for="inputDescription" class="control-label col-xs-2"><?php echo $this->formlabel($form->get('description')); ?></label>
+    <div class="col-xs-6"><?php echo $this->formElement($form->get('description')); ?></div>
+    <div class="col-xs-4"><?php echo $this->formElementErrors($form->get('description')) ?></div>
+</div>
+<div class="form-group">
+    <div class="col-xs-offset-2 col-xs-10"><?php echo $this->formSubmit($form->get('submit')); ?></div>
+</div>
+<?php echo $this->form()->closeTag(); ?>

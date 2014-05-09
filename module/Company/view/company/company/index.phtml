@@ -1,0 +1,38 @@
+<?php
+$title = 'Firmen';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('company', array('action' => 'add')); ?>">Neue Firma hinzuf&uuml;gen</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>E-Mail</th>
+        <th>Telefon</th>
+        <th>Strasse</th>
+        <th>PLZ, Ort</th>
+        <th>Web</th>
+        <th>Beschreibung</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($companies as $company) : ?>
+        <tr>
+            <td><?php echo $this->escapeHtml($company->name); ?></td>
+            <td><?php echo $this->escapeHtml($company->email); ?></td>
+            <td><?php echo $this->escapeHtml($company->phone); ?></td>
+            <td><?php echo $this->escapeHtml($company->street); ?></td>
+            <td><?php echo $this->escapeHtml($company->zip) . ' ' . $this->escapeHtml($company->place); ?></td>
+            <td><?php echo $this->escapeHtml($company->web); ?></td>
+            <td><?php echo $this->escapeHtml($company->description); ?></td>
+            <td>
+                <a href="<?php echo $this->url('company', array('action' => 'edit', 'id' => $company->id));
+        ?>">Edit</a>
+                <a href="<?php echo $this->url('company', array('action' => 'delete', 'id' => $company->id));
+        ?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>

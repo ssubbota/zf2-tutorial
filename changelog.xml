@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+     
+    <changeSet id="1" author="Stanislav">
+        <createTable tableName="firma">
+            <column name="id" type="int(11)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(200)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="phone" type="varchar(45)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="fax" type="varchar(45)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="street" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="zip" type="varchar(10)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="place" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="country" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="web" type="varchar(200)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="text">
+                <constraints nullable="true"/>
+            </column>
+            <column name="edited_by" type="int(11)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="edited_on" type="timestamp">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <addAutoIncrement tableName="firma" columnName="id" columnDataType="int(11)" />
+    </changeSet>
+    
+    <changeSet id="2" author="Stanislav">
+        <createTable tableName="filiale">
+            <column name="id" type="int(11)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="company_id" type="int(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(200)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="phone" type="varchar(45)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="fax" type="varchar(45)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="street" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="zip" type="varchar(10)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="place" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="country" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="web" type="varchar(200)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="text">
+                <constraints nullable="true"/>
+            </column>
+            <column name="edited_by" type="int(11)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="edited_on" type="timestamp">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <addAutoIncrement tableName="filiale" columnName="id" columnDataType="int(11)" />
+    </changeSet>
+    
+    <changeSet id="3" author="Stanislav">
+        <dropTable tableName="filiale"/>
+        <dropTable tableName="firma"/>
+        <createTable tableName="company">
+            <column name="id" type="int(11)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(200)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="phone" type="varchar(45)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="fax" type="varchar(45)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="street" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="zip" type="varchar(10)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="place" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="country" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="web" type="varchar(200)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="text">
+                <constraints nullable="true"/>
+            </column>
+            <column name="edited_by" type="int(11)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="edited_on" type="timestamp">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <addAutoIncrement tableName="company" columnName="id" columnDataType="int(11)" />
+        <createTable tableName="branch">
+            <column name="id" type="int(11)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="company_id" type="int(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(200)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="phone" type="varchar(45)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="fax" type="varchar(45)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="street" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="zip" type="varchar(10)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="place" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="country" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="web" type="varchar(200)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="text">
+                <constraints nullable="true"/>
+            </column>
+            <column name="edited_by" type="int(11)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="edited_on" type="timestamp">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <addAutoIncrement tableName="branch" columnName="id" columnDataType="int(11)" />
+    </changeSet>
+    
+</databaseChangeLog>
