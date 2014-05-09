@@ -5,8 +5,6 @@ namespace User\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-use User\Form\Login as LoginForm;
-
 //Doctrine Stuff
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -59,45 +57,5 @@ class UserController extends AbstractActionController {
         $view->setVariable ( 'id', $id );
         return $view;
     }
-    
-    /**
-     * Index Action
-     */
-    public function indexAction()
-    {
-        //@todo - Implement indexAction
-    }
-
-    /**
-     * Login Action
-     *
-     * @return array
-     */
-    public function loginAction()
-    {
-        $form = new LoginForm();
-        $request = $this->getRequest();
-
-        if ($request->isPost() && $form->isValid($request->post()->toArray())) {
-            $uAuth = $this->getLocator()->get('User\Controller\Plugin\UserAuthentication'); //@todo - We must use PluginLoader $this->userAuthentication()!!
-            $authAdapter = $uAuth->getAuthAdapter();
-
-            $authAdapter->setIdentity($form->getValue('username'));
-            $authAdapter->setCredential($form->getValue('password'));
-
-            \Zend\Debug::dump($uAuth->getAuthService()->authenticate($authAdapter));
-        }
-
-        return array('loginForm' => $form);
-    }
-
-    /**
-     * Logout Action
-     */
-    public function logoutAction()
-    {
-        $this->getLocator()->get('User\Controller\Plugin\UserAuthentication')->clearIdentity(); //@todo - We must use PluginLoader $this->userAuthentication()!!
-    }
 
 }
-

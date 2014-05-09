@@ -17,7 +17,7 @@ return array(
         'ZfcBase',
         'ZfcUser',
         'ZfcUserDoctrineORM',
-        'BjyAuthorize',
+        //'BjyAuthorize',
         'Branch',
         'User'
     ),
