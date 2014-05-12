@@ -62,6 +62,82 @@ return array(
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
+        'factories' => array(
+            //'translator' => 'Zend\I18n\Translator\TranslatorServiceFactory',
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
+        ),
+    ),
+    //This configuration maps out the pages we’ve defined in our controller, with labels linking to the given route names. 
+    'navigation' => array(
+        'default' => array(
+            array(
+                'label' => 'Home',
+                'route' => 'home',
+            ),
+            array(
+                'label' => 'Album',
+                'route' => 'album',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'route' => 'album',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'route' => 'album',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'route' => 'album',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+            array(
+                'label' => 'Firmen',
+                'route' => 'company',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'route' => 'company',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'route' => 'company',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'route' => 'company',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+            array(
+                'label' => 'Filialen',
+                'route' => 'branch',
+                'pages' => array(
+                    array(
+                        'label' => 'Add',
+                        'route' => 'branch',
+                        'action' => 'add',
+                    ),
+                    array(
+                        'label' => 'Edit',
+                        'route' => 'branch',
+                        'action' => 'edit',
+                    ),
+                    array(
+                        'label' => 'Delete',
+                        'route' => 'branch',
+                        'action' => 'delete',
+                    ),
+                ),
+            ),
+        ),
     ),
     'translator' => array(
         'locale' => 'en_US',
