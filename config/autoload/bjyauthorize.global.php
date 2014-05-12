@@ -13,8 +13,8 @@ return array(
          * for ZfcUser, this will be your default identity provider
          */
         
-        //'identity_provider' => 'BjyAuthorize\Provider\Identity\ZfcUserZendDb',
-        'identity_provider'  => 'BjyAuthorize\Provider\Identity\AuthenticationIdentityProvider',
+        'identity_provider' => 'BjyAuthorize\Provider\Identity\ZfcUserZendDb',
+        //'identity_provider'  => 'BjyAuthorize\Provider\Identity\AuthenticationIdentityProvider',
 
         /* If you only have a default role and an authenticated role, you can
          * use the 'AuthenticationIdentityProvider' to allow/restrict access
@@ -35,13 +35,14 @@ return array(
             /* here, 'guest' and 'user are defined as top-level roles, with
              * 'admin' inheriting from user
              */
-            'BjyAuthorize\Provider\Role\Config' => array(
+            /*'BjyAuthorize\Provider\Role\Config' => array(
                 'guest' => array(),
-                //'admin' => array(),
-                'user'  => array('children' => array(
+                'admin' => array(),
+                '3' => array(),
+                /*'user'  => array('children' => array(
                     'admin' => array(),
-                )),
-            ),
+                )),*
+            ),*/
 
             // this will load roles from the user_role table in a database
             // format: user_role(role_id(varchar), parent(varchar))
@@ -52,12 +53,12 @@ return array(
                 'parent_role_field'     => 'parent_id',
             ),
             
-            /*// this will load roles from
+            // this will load roles from
             // the 'BjyAuthorize\Provider\Role\ObjectRepositoryProvider' service
-            'BjyAuthorize\Provider\Role\ObjectRepositoryProvider' => array(
+            /*'BjyAuthorize\Provider\Role\ObjectRepositoryProvider' => array(
                 // class name of the entity representing the role
                 //'role_entity_class' => 'Application\Entity\Role',
-                'role_entity_class' => 'User\Entity\User',
+                'role_entity_class' => 'Application\Entity\User',
                 // service name of the object manager
                 'object_manager'    => 'Doctrine\ORM\EntityManager',
             ),*/
@@ -67,8 +68,9 @@ return array(
         // in the ACL. like roles, they can be hierarchical
         'resource_providers' => array(
             'BjyAuthorize\Provider\Resource\Config' => array(
-                'Album' => array(),
+                'album' => array(),
                 'company' => array(),
+                'branch' => array(),
             ),
         ),
 
@@ -83,13 +85,15 @@ return array(
                 'allow' => array(
                     // allow guests and users (and admins, through inheritance)
                     // the "edit" privilege on the resource "company"
-                    array(array('user'), 'Album', array('edit')),
+                    array(array('user'), 'album', array('index')),
                 ),
 
                 // Don't mix allow/deny rules if you are using role inheritance.
                 // There are some weird bugs.
                 'deny' => array(
                     //array('guest'), 'company', 'index'
+                    //array(array('guest'), 'album', array('edit', 'delete')),
+                    //array(array('admin'), 'company', array('index', 'delete')),
                 ),
             ),
         ),
@@ -98,42 +102,42 @@ return array(
          *
          * Consider enabling either the controller or the route guard depending on your needs.
          */
-        /*'guards' => array(
+        'guards' => array(
             // If this guard is specified here (i.e. it is enabled), it will block
             // access to all controllers and actions unless they are specified here.
             // You may omit the 'action' index to allow access to the entire controller
             
             'BjyAuthorize\Guard\Controller' => array(
-                array('controller' => 'index', 'action' => 'index', 'roles' => array('guest','user')),
-                array('controller' => 'index', 'action' => 'stuff', 'roles' => array('user')),
+                /*array('controller' => 'index', 'action' => 'index', 'roles' => array('admin','user')),
+                array('controller' => 'album', 'action' => 'index', 'roles' => array('admin','user')),*/
+                //array('controller' => 'index', 'action' => 'stuff', 'roles' => array('user')),
                 // You can also specify an array of actions or an array of controllers (or both)
                 // allow "guest" and "admin" to access actions "list" and "manage" on these "index",
                 // "static" and "console" controllers
                 array(
-                    'controller' => array('index', 'static', 'console'),
-                    'action' => array('list', 'manage'),
-                    'roles' => array('guest', 'admin')
-                ),
-                array(
-                    'controller' => array('search', 'administration'),
-                    'roles' => array('staffer', 'admin')
+                    'controller' => array('Album\Controller\Album', 'Company\Controller\Company', 'Branch\Controller\Branch'),
+                    'action' => array('add', 'edit', 'delete'),
+                    'roles' => array('admin')
                 ),
                 array('controller' => 'zfcuser', 'roles' => array()),
                 // Below is the default index action used by the ZendSkeletonApplication
-                // array('controller' => 'Application\Controller\Index', 'roles' => array('guest', 'user')),
+                array('controller' => 'Application\Controller\Index', 'roles' => array('guest', 'user')),
+                array('controller' => 'Album\Controller\Album', 'action' => array('index'), 'roles' => array('admin', 'user')),
+                array('controller' => 'Company\Controller\Company', 'action' => array('index'), 'roles' => array('admin', 'user')),
+                array('controller' => 'Branch\Controller\Branch', 'action' => array('index'), 'roles' => array('admin', 'user')),
             ),
             
             // If this guard is specified here (i.e. it is enabled), it will block
             // access to all routes unless they are specified here.
-            'BjyAuthorize\Guard\Route' => array(
+            /*'BjyAuthorize\Guard\Route' => array(
                 array('route' => 'zfcuser', 'roles' => array('user')),
                 array('route' => 'zfcuser/logout', 'roles' => array('user')),
                 array('route' => 'zfcuser/login', 'roles' => array('guest')),
                 array('route' => 'zfcuser/register', 'roles' => array('guest')),
                 // Below is the default index action used by the ZendSkeletonApplication
                 array('route' => 'home', 'roles' => array('guest', 'user')),
-            ),
-        ),*/
+            ),*/
+        ),
     ),
 );
 

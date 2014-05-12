@@ -71,7 +71,7 @@ class MyAclPlugin extends AbstractPlugin {
         
         $controllerName = strtolower(array_pop(explode('\\', $routeMatch->getParam('controller', 'not-found'))));
 
-          print '<br>Role: '.$roles.'<br>';
+          print '<br>Role: '.$role.'<br>';
           print '<br>$moduleName: '.$moduleName.'<br>';
           print '<br>$controllerClass: '.$controllerClass.'<br>';
           print '$controllerName: '.$controllerName.'<br>';

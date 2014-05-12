@@ -39,21 +39,19 @@
                 <div class="collapse navbar-collapse">
                     <!--<ul class="nav navbar-nav">
                         <!-- class="active" --
-                        <li><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                        <li><a href="<?php echo $this->url('album') ?>"><?php echo $this->translate('Album') ?></a></li>
-                        <li><a href="<?php echo $this->url('company') ?>"><?php echo $this->translate('Firmen') ?></a></li>
-                        <li><a href="<?php echo $this->url('branch') ?>"><?php echo $this->translate('Filialen') ?></a></li>
+                        <li><a href="<?php #echo $this->url('home') ?>"><?php #echo $this->translate('Home') ?></a></li>
+                        <li><a href="<?php #echo $this->url('album') ?>"><?php #echo $this->translate('Album') ?></a></li>
+                        <li><a href="<?php #echo $this->url('company') ?>"><?php #echo $this->translate('Firmen') ?></a></li>
+                        <li><a href="<?php #echo $this->url('branch') ?>"><?php #echo $this->translate('Filialen') ?></a></li>
                     </ul>-->
                     
-                    <!--<a class="brand"
-                        href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Skeleton Application') ?></a>-->
-                     <?php // <-- Update this !!
-                     echo $this->navigation('navigation')
-                         ->menu()
-                         ->setMinDepth(0)
-                         ->setMaxDepth(0)
-                         ->setUlClass('nav navbar-nav')
-                         ->render();
+                     <?php
+                        echo $this->navigation('navigation')
+                            ->menu()
+                            ->setMinDepth(0)
+                            ->setMaxDepth(0)
+                            ->setUlClass('nav navbar-nav')
+                            ->render();
                      ?>
                 </div><!--/.nav-collapse -->
             </div>

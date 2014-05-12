@@ -19,7 +19,7 @@ return array(
         'ZfcUserDoctrineORM',
         'BjyAuthorize',
         'Branch',
-        'MyAcl',
+        //'MyAcl',
         'User'
     ),
     'module_listener_options' => array(
